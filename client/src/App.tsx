@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Theme from "./components/layout/Theme";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <main>
-      <h1>App!</h1>
-    </main>
+    <BrowserRouter>
+      <Theme>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </Theme>
+    </BrowserRouter>
   );
 }
 

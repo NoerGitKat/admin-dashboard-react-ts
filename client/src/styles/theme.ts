@@ -48,11 +48,11 @@ export const darkTheme: TThemePalette = {
 export const lightTheme = reverseTheme(darkTheme);
 
 // mui theme settings
-export const themeSettings = (mode: string) => {
+export const themeSettings = (theme: string) => {
   return {
     palette: {
-      mode: mode,
-      ...(mode === "dark"
+      theme: theme,
+      ...(theme === "dark"
         ? {
             primary: {
               ...darkTheme.primary,

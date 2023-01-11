@@ -16,7 +16,6 @@ function reverseTheme(tokensDark: TThemePalette): TThemePalette | {} {
 
     for (let i = 0; i < length; i++) {
       reversedObj[keys[i]] = values[length - i - 1];
-      console.log("reversedObj", reversedObj);
     }
 
     reversedTheme[key] = reversedObj;

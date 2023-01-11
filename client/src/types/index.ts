@@ -1,3 +1,5 @@
+import { ETheme } from "./enums";
+
 export type TThemePalette = {
   grey: {
     0: string;
@@ -37,4 +39,8 @@ export type TThemePalette = {
     800: string;
     900: string;
   };
+};
+
+export type TGlobalState = {
+  theme: ETheme;
 };

@@ -41,6 +41,47 @@ export type TThemePalette = {
   };
 };
 
+export type TTheme = {
+  palette: {
+    primary: any;
+    secondary: any;
+    neutral: any;
+    background: {
+      default: string;
+      alt: string;
+    };
+    theme: string;
+  };
+  typography: {
+    fontFamily: string;
+    fontSize: number;
+    h1: {
+      fontFamily: string;
+      fontSize: number;
+    };
+    h2: {
+      fontFamily: string;
+      fontSize: number;
+    };
+    h3: {
+      fontFamily: string;
+      fontSize: number;
+    };
+    h4: {
+      fontFamily: string;
+      fontSize: number;
+    };
+    h5: {
+      fontFamily: string;
+      fontSize: number;
+    };
+    h6: {
+      fontFamily: string;
+      fontSize: number;
+    };
+  };
+};
+
 export type TGlobalState = {
   theme: ETheme;
 };

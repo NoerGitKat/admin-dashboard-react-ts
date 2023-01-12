@@ -1,5 +1,4 @@
-import { TThemePalette } from "../types";
-import { reverseTheme } from "../utils";
+import { TTheme, TThemePalette } from "../types";
 
 // color design tokens export
 export const darkTheme: TThemePalette = {
@@ -45,15 +44,55 @@ export const darkTheme: TThemePalette = {
   },
 };
 
-export const lightTheme = reverseTheme(darkTheme);
+export const lightTheme: TThemePalette = {
+  grey: {
+    "0": "#000000",
+    "10": "#141414",
+    "50": "#292929",
+    "100": "#3d3d3d",
+    "200": "#525252",
+    "300": "#666666",
+    "400": "#858585",
+    "500": "#a3a3a3",
+    "600": "#c2c2c2",
+    "700": "#e0e0e0",
+    "800": "#f0f0f0",
+    "900": "#f6f6f6",
+    "1000": "#ffffff",
+  },
+  primary: {
+    "100": "#070812",
+    "200": "#0d1025",
+    "300": "#141937",
+    "400": "#191F45",
+    "500": "#21295c",
+    "600": "#4d547d",
+    "700": "#7a7f9d",
+    "800": "#a6a9be",
+    "900": "#d3d4de",
+  },
+  secondary: {
+    "50": "#332a14",
+    "100": "#665429",
+    "200": "#997d3d",
+    "300": "#cca752",
+    "400": "#ffd166",
+    "500": "#ffda85",
+    "600": "#ffe3a3",
+    "700": "#ffedc2",
+    "800": "#fff6e0",
+    "900": "#f0f0f0",
+  },
+};
 
 // mui theme settings
-export const themeSettings = (theme: string) => {
+export const themeSettings = (theme: string): TTheme => {
   return {
     palette: {
-      theme: theme,
+      theme,
       ...(theme === "dark"
         ? {
+            // Dark mode
             primary: {
               ...darkTheme.primary,
               main: darkTheme.primary[400],
@@ -73,6 +112,7 @@ export const themeSettings = (theme: string) => {
             },
           }
         : {
+            // Light mode
             primary: {
               ...lightTheme.primary,
               main: darkTheme.grey[50],

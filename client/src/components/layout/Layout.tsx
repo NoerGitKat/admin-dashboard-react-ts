@@ -1,8 +1,15 @@
+import { Box } from "@mui/material";
+import { Outlet } from "react-router-dom";
+import Navbar from "../common/Navbar";
+
 function Layout() {
   return (
-    <>
-      <h1>Layout</h1>
-    </>
+    <Box width="100%" height="100%">
+      <Box>
+        <Navbar />
+        <Outlet />
+      </Box>
+    </Box>
   );
 }
 

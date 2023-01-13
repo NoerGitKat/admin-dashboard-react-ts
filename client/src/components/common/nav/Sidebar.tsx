@@ -1,18 +1,90 @@
-import { Close } from "@mui/icons-material";
+import {
+  AdminPanelSettingsOutlined,
+  CalendarMonthOutlined,
+  Close,
+  Groups2Outlined,
+  HomeOutlined,
+  PieChartOutlined,
+  PointOfSaleOutlined,
+  PublicOutlined,
+  ReceiptLongOutlined,
+  ShoppingCartOutlined,
+  TodayOutlined,
+  TrendingUpOutlined,
+} from "@mui/icons-material";
 import {
   Box,
   Drawer,
   IconButton,
-  List,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../hooks";
-import { toggleSidebar } from "../store/globalSlice";
-import NavBox from "./common/NavBox";
+import { useAppSelector } from "../../../hooks";
+import { toggleSidebar } from "../../../store/globalSlice";
+import { TNavItem } from "../../../types";
+import NavBox from "./NavBox";
+import NavList from "./NavList";
+
+const navItems: TNavItem[] = [
+  {
+    text: "Dashboard",
+    icon: <HomeOutlined />,
+  },
+  {
+    text: "Client Facing",
+    icon: null,
+  },
+  {
+    text: "Products",
+    icon: <ShoppingCartOutlined />,
+  },
+  {
+    text: "Customers",
+    icon: <Groups2Outlined />,
+  },
+  {
+    text: "Transactions",
+    icon: <ReceiptLongOutlined />,
+  },
+  {
+    text: "Geography",
+    icon: <PublicOutlined />,
+  },
+  {
+    text: "Sales",
+    icon: null,
+  },
+  {
+    text: "Overview",
+    icon: <PointOfSaleOutlined />,
+  },
+  {
+    text: "Daily",
+    icon: <TodayOutlined />,
+  },
+  {
+    text: "Monthly",
+    icon: <CalendarMonthOutlined />,
+  },
+  {
+    text: "Breakdown",
+    icon: <PieChartOutlined />,
+  },
+  {
+    text: "Management",
+    icon: null,
+  },
+  {
+    text: "Admin",
+    icon: <AdminPanelSettingsOutlined />,
+  },
+  {
+    text: "Performance",
+    icon: <TrendingUpOutlined />,
+  },
+];
 
 function Sidebar({ width }: { width: string }) {
   const theme = useTheme();
@@ -22,8 +94,6 @@ function Sidebar({ width }: { width: string }) {
     (state) => state.global.isSidebarOpened,
   );
 
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
   return (
     <Box component="nav">
       {isSidebarOpened && (
@@ -49,7 +119,7 @@ function Sidebar({ width }: { width: string }) {
               <NavBox styles={{ color: theme.palette.secondary.main }}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
-                    NAVIGATION
+                    Mern Dashy
                   </Typography>
                 </Box>
 
@@ -58,9 +128,7 @@ function Sidebar({ width }: { width: string }) {
                 </IconButton>
               </NavBox>
             </Box>
-            <List>
-              { }
-            </List>
+            <NavList navItems={navItems} />
           </Box>
         </Drawer>
       )}

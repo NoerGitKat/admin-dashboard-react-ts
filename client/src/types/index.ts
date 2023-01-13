@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { ETheme } from "./enums";
 
 export type TThemePalette = {
@@ -85,4 +86,9 @@ export type TTheme = {
 export type TGlobalState = {
   theme: ETheme;
   isSidebarOpened: boolean;
+};
+
+export type TNavItem = {
+  text: string;
+  icon: ReactNode | undefined;
 };

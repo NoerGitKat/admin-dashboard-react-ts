@@ -13,12 +13,12 @@ import {
 } from "@mui/material";
 import { GridMenuIcon } from "@mui/x-data-grid";
 import { useDispatch } from "react-redux";
-import { setTheme, toggleSidebar } from "../../store/globalSlice";
-import { TTheme } from "../../types";
-import { ETheme } from "../../types/enums";
+import { setTheme, toggleSidebar } from "../../../store/globalSlice";
+import { TTheme } from "../../../types";
+import { ETheme } from "../../../types/enums";
 import NavBox from "./NavBox";
 
-const navbarStyles = {
+const topbarStyles = {
   position: "static",
   background: "none",
   boxShadow: "none",
@@ -28,16 +28,16 @@ const toolbarStyles = {
   justifyContent: "space-between",
 };
 
-function Navbar() {
+function Topbar() {
   const dispatch = useDispatch();
   const theme = useTheme<TTheme>();
 
   return (
-    <AppBar sx={navbarStyles}>
+    <AppBar sx={topbarStyles}>
       <Toolbar sx={toolbarStyles}>
         {/* LEFT SIDE */}
         <NavBox>
-          <IconButton onClick={() => dispatch(toggleSidebar())}>
+          <IconButton color="inherit" onClick={() => dispatch(toggleSidebar())}>
             <GridMenuIcon />
           </IconButton>
           <NavBox
@@ -45,26 +45,26 @@ function Navbar() {
               backgroundColor: theme.palette.background.alt,
               borderRadius: "9px",
               gap: "3rem",
-              padding: "0.1rem 1.5rem",
+              padding: "0.1rem 0.35rem 0 1rem",
               margin: "0 0 0 1rem",
             }}
           >
-            <InputBase placeholder="Search..." />
-            <IconButton>
+            <InputBase sx={{ color: "inherit" }} placeholder="Search..." />
+            <IconButton color="inherit">
               <Search />
             </IconButton>
           </NavBox>
         </NavBox>
         {/* RIGHT SIDE */}
         <NavBox>
-          <IconButton onClick={() => dispatch(setTheme())}>
+          <IconButton color="inherit" onClick={() => dispatch(setTheme())}>
             {theme.palette.theme === ETheme.Dark ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
             ) : (
               <LightModeOutlined sx={{ fontSize: "25px" }} />
             )}
           </IconButton>
-          <IconButton>
+          <IconButton color="inherit">
             <SettingsOutlined />
           </IconButton>
         </NavBox>
@@ -73,4 +73,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Topbar;

@@ -6,7 +6,6 @@ import {
 } from "@mui/icons-material";
 import {
   AppBar,
-  Box,
   IconButton,
   InputBase,
   Toolbar,
@@ -14,10 +13,10 @@ import {
 } from "@mui/material";
 import { GridMenuIcon } from "@mui/x-data-grid";
 import { useDispatch } from "react-redux";
-import { useSidebar } from "../../hooks";
-import { setTheme } from "../../store/globalSlice";
+import { setTheme, toggleSidebar } from "../../store/globalSlice";
 import { TTheme } from "../../types";
 import { ETheme } from "../../types/enums";
+import NavBox from "./NavBox";
 
 const navbarStyles = {
   position: "static",
@@ -29,14 +28,7 @@ const toolbarStyles = {
   justifyContent: "space-between",
 };
 
-const navBoxStyles = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
-
 function Navbar() {
-  const { isOpened, toggleSidebar } = useSidebar();
   const dispatch = useDispatch();
   const theme = useTheme<TTheme>();
 
@@ -44,13 +36,12 @@ function Navbar() {
     <AppBar sx={navbarStyles}>
       <Toolbar sx={toolbarStyles}>
         {/* LEFT SIDE */}
-        <Box sx={navBoxStyles}>
-          <IconButton onClick={toggleSidebar}>
+        <NavBox>
+          <IconButton onClick={() => dispatch(toggleSidebar())}>
             <GridMenuIcon />
           </IconButton>
-          <Box
-            sx={{
-              ...navBoxStyles,
+          <NavBox
+            styles={{
               backgroundColor: theme.palette.background.alt,
               borderRadius: "9px",
               gap: "3rem",
@@ -62,10 +53,10 @@ function Navbar() {
             <IconButton>
               <Search />
             </IconButton>
-          </Box>
-        </Box>
+          </NavBox>
+        </NavBox>
         {/* RIGHT SIDE */}
-        <Box sx={navBoxStyles}>
+        <NavBox>
           <IconButton onClick={() => dispatch(setTheme())}>
             {theme.palette.theme === ETheme.Dark ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
@@ -76,7 +67,7 @@ function Navbar() {
           <IconButton>
             <SettingsOutlined />
           </IconButton>
-        </Box>
+        </NavBox>
       </Toolbar>
     </AppBar>
   );

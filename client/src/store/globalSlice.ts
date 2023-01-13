@@ -4,6 +4,7 @@ import { ETheme } from "../types/enums";
 
 const initialState: TGlobalState = {
   theme: ETheme.Dark,
+  isSidebarOpened: false,
 };
 
 const globalSlice = createSlice({
@@ -13,9 +14,12 @@ const globalSlice = createSlice({
     setTheme: (state) => {
       state.theme = state.theme === ETheme.Light ? ETheme.Dark : ETheme.Light;
     },
+    toggleSidebar: (state) => {
+      state.isSidebarOpened = !state.isSidebarOpened;
+    },
   },
 });
 
-export const { setTheme } = globalSlice.actions;
+export const { setTheme, toggleSidebar } = globalSlice.actions;
 
 export default globalSlice.reducer;

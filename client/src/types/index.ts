@@ -86,6 +86,7 @@ export type TTheme = {
 export type TGlobalState = {
   theme: ETheme;
   isSidebarOpened: boolean;
+  userId: string;
 };
 
 export type TNavItem = {

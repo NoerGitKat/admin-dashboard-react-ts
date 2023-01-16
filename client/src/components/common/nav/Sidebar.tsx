@@ -123,7 +123,10 @@ function Sidebar({ width }: { width: string }) {
                   </Typography>
                 </Box>
 
-                <IconButton onClick={() => dispatch(toggleSidebar())}>
+                <IconButton
+                  color="inherit"
+                  onClick={() => dispatch(toggleSidebar())}
+                >
                   <Close />
                 </IconButton>
               </NavBox>

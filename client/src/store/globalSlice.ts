@@ -5,6 +5,7 @@ import { ETheme } from "../types/enums";
 const initialState: TGlobalState = {
   theme: ETheme.Dark,
   isSidebarOpened: false,
+  userId: "63701cc1f03239b7f700000e",
 };
 
 const globalSlice = createSlice({

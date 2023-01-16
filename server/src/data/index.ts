@@ -1,6 +1,6 @@
 import { TAffilliateStat } from "./../types";
 
-export const dataAffiliateStat: TAffilliateStat = [
+export const dataAffiliateStat: TAffilliateStat[] = [
   {
     _id: "6371251df03239e680000033",
     userId: "63701cc1f03239f09e00018a",
@@ -19073,7 +19073,7 @@ export const dataUser = [
   {
     _id: "63701cc1f032395b3300011e",
     name: "Rosemary",
-    email: "rseden2l@aboutads.info",
+    email: "rseden2l@aboutads.com",
     password: "vSfBeEJmd",
     city: "Gondifelos",
     state: "03",

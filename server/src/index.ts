@@ -1,13 +1,14 @@
 import express from "express";
 import { PORT } from "./constants";
 import middlewares from "./middlewares";
-import { clientRouter } from "./routes";
-import connectDB from "./services/connect-db";
+import { authRouter, clientRouter } from "./routes";
+import { connectDB, seedDB } from "./services/";
 
 const app = express();
 
-// Configuration
+// Seed database
 
+// Configuration
 app.use(express.json());
 app.use(middlewares.helmet());
 app.use(
@@ -18,11 +19,14 @@ app.use(middlewares.morgan("common"));
 
 // Routes
 app.use("/client", clientRouter);
+app.use("/auth", authRouter);
 
 app.listen(PORT, async () => {
   try {
     await connectDB();
-    return console.log(`Express is listening at http://localhost:${PORT}`);
+    await seedDB();
+    console.log("Successfully seeded database!");
+    return console.log(`Server is listening at http://localhost:${PORT}`);
   } catch (error) {
     console.log("Error!", error);
   }

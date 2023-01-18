@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ETheme } from "./enums";
+import { ERole, ETheme } from "./enums";
 
 export type TThemePalette = {
   grey: {
@@ -93,3 +93,16 @@ export type TNavItem = {
   text: string;
   icon: ReactNode | undefined;
 };
+
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+  city: string;
+  state: string;
+  country: string;
+  occupation: string;
+  phone: string;
+  transactions: string[];
+  role: ERole;
+}

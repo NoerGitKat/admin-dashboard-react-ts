@@ -1,23 +1,5 @@
-import { Document, model, Schema } from "mongoose";
-
-enum ERole {
-  user,
-  admin,
-  superadmin,
-}
-
-export interface IUser extends Document {
-  name: string;
-  email: string;
-  password: string;
-  city: string;
-  state: string;
-  country: string;
-  occupation: string;
-  phone: string;
-  transactions: string[];
-  role: ERole;
-}
+import { model, Schema } from "mongoose";
+import { IUser } from "../types";
 
 const userSchema: Schema = new Schema(
   {

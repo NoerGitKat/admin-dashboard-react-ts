@@ -23,4 +23,4 @@ const globalSlice = createSlice({
 
 export const { setTheme, toggleSidebar } = globalSlice.actions;
 
-export default globalSlice.reducer;
+export default globalSlice;

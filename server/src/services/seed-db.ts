@@ -1,5 +1,5 @@
 import { connection } from "mongoose";
-import { dataOverallStat, dataProduct, dataUser } from "../data";
+import {  dataProduct, dataProductStat, dataUser } from "../data";
 import { Product, ProductStats, User } from "../models";
 
 async function seedDB() {
@@ -18,7 +18,7 @@ async function seedDB() {
 
     await User.insertMany(dataUser);
     await Product.insertMany(dataProduct);
-    await ProductStats.insertMany(dataOverallStat);
+    await ProductStats.insertMany(dataProductStat);
   } catch (e) {
     console.log(e);
   }

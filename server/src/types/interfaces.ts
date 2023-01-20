@@ -1,12 +1,16 @@
 import { ERole } from "enums";
 
+interface DocumentResult<T> {
+  _doc: T;
+}
+
 export type TAffilliateStat = {
   _id: string;
   userId: string;
   affiliateSales: string[];
 };
 
-export interface IUser extends Document {
+export interface IUser extends DocumentResult<IUser> {
   name: string;
   email: string;
   password: string;
@@ -19,7 +23,7 @@ export interface IUser extends Document {
   role: ERole;
 }
 
-export interface IProduct extends Document {
+export interface IProduct extends DocumentResult<IProduct> {
   name: string;
   price: number;
   description: string;
@@ -27,7 +31,7 @@ export interface IProduct extends Document {
   supply: number;
 }
 
-export interface IProductStats extends Document {
+export interface IProductStats extends DocumentResult<IProductStats> {
   productId: string;
   yearlySalesTotal: number;
   yearlyTotalSoldUnits: number;

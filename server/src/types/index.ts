@@ -1,2 +1,2 @@
 export { EHttpStatusCode, ERole } from "./enums";
-export type { IUser, TAffilliateStat } from "./interfaces";
+export type { IUser, IProduct, TAffilliateStat } from "./interfaces";

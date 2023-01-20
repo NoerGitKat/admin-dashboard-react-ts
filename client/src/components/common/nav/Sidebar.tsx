@@ -40,7 +40,7 @@ function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
               boxSizing: "border-box",
               borderWidth: isDesktop ? 0 : "0.125rem",
               width,
-              borderRight: "0.25rem solid black",
+              borderRight: "0.1rem solid black",
             },
           }}
         >
@@ -95,12 +95,14 @@ function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
                   </Typography>
                 </Box>
               )}
-              <SettingsOutlined
-                sx={{
-                  color: theme.palette.secondary[300],
-                  fontSize: "1.5625rem ",
-                }}
-              />
+              <IconButton color="inherit">
+                <SettingsOutlined
+                  sx={{
+                    color: theme.palette.secondary[300],
+                    fontSize: "1.5625rem ",
+                  }}
+                />
+              </IconButton>
             </NavBox>
           </Box>
         </Drawer>

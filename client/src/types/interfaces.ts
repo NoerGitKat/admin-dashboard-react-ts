@@ -45,14 +45,13 @@ export type TThemePalette = {
 
 export type TTheme = Theme & {
   palette: {
-    primary: any;
-    secondary: any;
-    neutral: any;
+    mode: string;
+    primary: TThemePalette["primary"];
+    secondary: TThemePalette["secondary"];
     background: {
       default: string;
       alt: string;
     };
-    theme: string;
   };
   typography: {
     fontFamily: string;

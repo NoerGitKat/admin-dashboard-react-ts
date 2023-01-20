@@ -1,4 +1,4 @@
-import { TTheme, TThemePalette } from "../types";
+import { ETheme, TThemePalette } from "../types";
 
 // color design tokens export
 export const darkTheme: TThemePalette = {
@@ -86,10 +86,10 @@ export const lightTheme: TThemePalette = {
 };
 
 // mui theme settings
-export const themeSettings = (theme: string): TTheme => {
+export const themeSettings = (theme: ETheme) => {
   return {
     palette: {
-      theme,
+      mode: theme,
       ...(theme === "dark"
         ? {
             // Dark mode

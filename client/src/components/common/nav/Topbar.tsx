@@ -66,7 +66,7 @@ function Topbar({ user }: { user: IUser | undefined }) {
         {/* RIGHT SIDE */}
         <NavBox>
           <IconButton color="inherit" onClick={() => dispatch(setTheme())}>
-            {theme.palette.theme === ETheme.Dark ? (
+            {theme.palette.mode === ETheme.Dark ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
             ) : (
               <LightModeOutlined sx={{ fontSize: "25px" }} />

@@ -1,19 +1,7 @@
-import {
-  AdminPanelSettingsOutlined,
-  CalendarMonthOutlined,
-  Close,
-  Groups2Outlined,
-  HomeOutlined,
-  PieChartOutlined,
-  PointOfSaleOutlined,
-  PublicOutlined,
-  ReceiptLongOutlined,
-  ShoppingCartOutlined,
-  TodayOutlined,
-  TrendingUpOutlined,
-} from "@mui/icons-material";
+import { Close, SettingsOutlined } from "@mui/icons-material";
 import {
   Box,
+  Divider,
   Drawer,
   IconButton,
   Typography,
@@ -23,71 +11,14 @@ import {
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../../hooks";
 import { toggleSidebar } from "../../../store/globalSlice";
-import { TNavItem } from "../../../types";
+import { IUser, TTheme } from "../../../types";
 import NavBox from "./NavBox";
+import navItems from "./navItems";
 import NavList from "./NavList";
 
-const navItems: TNavItem[] = [
-  {
-    text: "Dashboard",
-    icon: <HomeOutlined />,
-  },
-  {
-    text: "Client Facing",
-    icon: null,
-  },
-  {
-    text: "Products",
-    icon: <ShoppingCartOutlined />,
-  },
-  {
-    text: "Customers",
-    icon: <Groups2Outlined />,
-  },
-  {
-    text: "Transactions",
-    icon: <ReceiptLongOutlined />,
-  },
-  {
-    text: "Geography",
-    icon: <PublicOutlined />,
-  },
-  {
-    text: "Sales",
-    icon: null,
-  },
-  {
-    text: "Overview",
-    icon: <PointOfSaleOutlined />,
-  },
-  {
-    text: "Daily",
-    icon: <TodayOutlined />,
-  },
-  {
-    text: "Monthly",
-    icon: <CalendarMonthOutlined />,
-  },
-  {
-    text: "Breakdown",
-    icon: <PieChartOutlined />,
-  },
-  {
-    text: "Management",
-    icon: null,
-  },
-  {
-    text: "Admin",
-    icon: <AdminPanelSettingsOutlined />,
-  },
-  {
-    text: "Performance",
-    icon: <TrendingUpOutlined />,
-  },
-];
-
-function Sidebar({ width }: { width: string }) {
-  const theme = useTheme();
+function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
+  console.log("user is", user);
+  const theme: TTheme = useTheme();
   const dispatch = useDispatch();
   const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
   const isSidebarOpened = useAppSelector(
@@ -132,6 +63,44 @@ function Sidebar({ width }: { width: string }) {
               </NavBox>
             </Box>
             <NavList navItems={navItems} />
+          </Box>
+          <Box>
+            <Divider />
+            <NavBox
+              styles={{
+                textTransform: "none",
+                gap: "1rem",
+                margin: "1.5rem 2rem 0 3rem",
+              }}
+            >
+              <Box height="2.5rem" width="2.5rem">
+                <img
+                  width="100%"
+                  src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
+                />
+              </Box>
+              <Box textAlign="left">
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.9rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {user && user.name}
+                </Typography>
+                <Typography
+                  fontSize="0.8rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {user && user.occupation}
+                </Typography>
+              </Box>
+              <SettingsOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "1.5625rem ",
+                }}
+              />
+            </NavBox>
           </Box>
         </Drawer>
       )}

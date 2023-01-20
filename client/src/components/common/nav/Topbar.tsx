@@ -6,15 +6,17 @@ import {
 } from "@mui/icons-material";
 import {
   AppBar,
+  Box,
   IconButton,
   InputBase,
   Toolbar,
+  Typography,
   useTheme,
 } from "@mui/material";
 import { GridMenuIcon } from "@mui/x-data-grid";
 import { useDispatch } from "react-redux";
 import { setTheme, toggleSidebar } from "../../../store/globalSlice";
-import { TTheme } from "../../../types";
+import { IUser, TTheme } from "../../../types";
 import { ETheme } from "../../../types/enums";
 import NavBox from "./NavBox";
 
@@ -28,7 +30,7 @@ const toolbarStyles = {
   justifyContent: "space-between",
 };
 
-function Topbar() {
+function Topbar({ user }: { user: IUser | undefined }) {
   const dispatch = useDispatch();
   const theme = useTheme<TTheme>();
 
@@ -67,6 +69,35 @@ function Topbar() {
           <IconButton color="inherit">
             <SettingsOutlined />
           </IconButton>
+          <NavBox
+            styles={{
+              textTransform: "none",
+              gap: "1rem",
+              margin: "1.5rem 2rem 0 3rem",
+            }}
+          >
+            <Box height="2.5rem" width="2.5rem">
+              <img
+                width="100%"
+                src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
+              />
+            </Box>
+            <Box textAlign="left">
+              <Typography
+                fontWeight="bold"
+                fontSize="0.9rem"
+                sx={{ color: theme.palette.secondary[100] }}
+              >
+                {user && user.name}
+              </Typography>
+              <Typography
+                fontSize="0.8rem"
+                sx={{ color: theme.palette.secondary[200] }}
+              >
+                {user && user.occupation}
+              </Typography>
+            </Box>
+          </NavBox>
         </NavBox>
       </Toolbar>
     </AppBar>

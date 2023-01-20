@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TGlobalState } from "../types";
-import { ETheme } from "../types/enums";
+import { ETheme, TGlobalState } from "../types";
 
 const initialState: TGlobalState = {
   theme: ETheme.Dark,

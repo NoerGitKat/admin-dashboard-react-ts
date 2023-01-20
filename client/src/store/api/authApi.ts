@@ -3,7 +3,7 @@ import { IUser } from "../../types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.BASE_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_ENDPOINT }),
   tagTypes: ["User"],
   endpoints: (builder) => ({
     getUser: builder.query<IUser, string>({

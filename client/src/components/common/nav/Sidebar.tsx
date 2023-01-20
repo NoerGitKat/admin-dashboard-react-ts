@@ -17,7 +17,6 @@ import navItems from "./navItems";
 import NavList from "./NavList";
 
 function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
-  console.log("user is", user);
   const theme: TTheme = useTheme();
   const dispatch = useDispatch();
   const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
@@ -79,21 +78,23 @@ function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
                   src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
                 />
               </Box>
-              <Box textAlign="left">
-                <Typography
-                  fontWeight="bold"
-                  fontSize="0.9rem"
-                  sx={{ color: theme.palette.secondary[100] }}
-                >
-                  {user && user.name}
-                </Typography>
-                <Typography
-                  fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
-                  {user && user.occupation}
-                </Typography>
-              </Box>
+              {user && (
+                <Box textAlign="left">
+                  <Typography
+                    fontWeight="bold"
+                    fontSize="0.9rem"
+                    sx={{ color: theme.palette.secondary[100] }}
+                  >
+                    {user && user.name}
+                  </Typography>
+                  <Typography
+                    fontSize="0.8rem"
+                    sx={{ color: theme.palette.secondary[200] }}
+                  >
+                    {user && user.occupation}
+                  </Typography>
+                </Box>
+              )}
               <SettingsOutlined
                 sx={{
                   color: theme.palette.secondary[300],

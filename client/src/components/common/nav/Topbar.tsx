@@ -1,4 +1,5 @@
 import {
+  ArrowDropDownOutlined,
   DarkModeOutlined,
   LightModeOutlined,
   Search,
@@ -7,14 +8,18 @@ import {
 import {
   AppBar,
   Box,
+  Button,
   IconButton,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   useTheme,
 } from "@mui/material";
 import { GridMenuIcon } from "@mui/x-data-grid";
 import { useDispatch } from "react-redux";
+import { useMenu } from "../../../hooks";
 import { setTheme, toggleSidebar } from "../../../store/globalSlice";
 import { IUser, TTheme } from "../../../types";
 import { ETheme } from "../../../types/enums";
@@ -33,6 +38,7 @@ const toolbarStyles = {
 function Topbar({ user }: { user: IUser | undefined }) {
   const dispatch = useDispatch();
   const theme = useTheme<TTheme>();
+  const { anchorEl, isOpen, openMenu, closeMenu } = useMenu();
 
   return (
     <AppBar sx={topbarStyles}>
@@ -73,30 +79,59 @@ function Topbar({ user }: { user: IUser | undefined }) {
             styles={{
               textTransform: "none",
               gap: "1rem",
-              margin: "1.5rem 2rem 0 3rem",
             }}
           >
-            <Box height="2.5rem" width="2.5rem">
-              <img
-                width="100%"
-                src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
+            <Button
+              onClick={openMenu}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                textTransform: "none",
+                gap: "1rem",
+              }}
+            >
+              <Box height="2.5rem" width="2.5rem">
+                <img
+                  width="100%"
+                  src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
+                />
+              </Box>
+              <Box textAlign="left">
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.85rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {user && user.name}
+                </Typography>
+                <Typography
+                  fontSize="0.75rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {user && user.occupation}
+                </Typography>
+              </Box>
+              <ArrowDropDownOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "1.5625rem",
+                }}
               />
-            </Box>
-            <Box textAlign="left">
-              <Typography
-                fontWeight="bold"
-                fontSize="0.9rem"
-                sx={{ color: theme.palette.secondary[100] }}
-              >
-                {user && user.name}
-              </Typography>
-              <Typography
-                fontSize="0.8rem"
-                sx={{ color: theme.palette.secondary[200] }}
-              >
-                {user && user.occupation}
-              </Typography>
-            </Box>
+            </Button>
+            <Menu
+              anchorEl={anchorEl}
+              open={isOpen}
+              onClose={closeMenu}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+            >
+              <MenuItem onClick={closeMenu}>Profile</MenuItem>
+              <MenuItem onClick={closeMenu}>My account</MenuItem>
+              <MenuItem onClick={closeMenu}>Logout</MenuItem>
+            </Menu>
           </NavBox>
         </NavBox>
       </Toolbar>

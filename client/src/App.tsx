@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Theme from "./components/layout/Theme";
-import { DashboardPage, ProductsPage } from "./pages";
+import { CustomersPage, DashboardPage, ProductsPage } from "./pages";
 
 function App() {
   return (
@@ -12,6 +12,8 @@ function App() {
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/customers" element={<CustomersPage />} />
+            <Route path="/*" element={<Navigate to="/dashboard" replace />} />
           </Route>
         </Routes>
       </Theme>

@@ -8,12 +8,22 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks";
 import { TNavItem, TTheme } from "../../../types";
 
-function NavList({ navItems }: { navItems: TNavItem[] }) {
+function NavList({
+  navItems,
+  onClose,
+}: {
+  navItems: TNavItem[];
+  onClose: ActionCreatorWithoutPayload<"global/toggleSidebar">;
+}) {
   const theme: TTheme = useTheme();
+  const dispatch = useAppDispatch();
   const { pathname } = useLocation();
+
   const navigate = useNavigate();
 
   return (
@@ -32,6 +42,7 @@ function NavList({ navItems }: { navItems: TNavItem[] }) {
             <ListItemButton
               onClick={() => {
                 navigate(`/${lcText}`);
+                dispatch(onClose());
               }}
               sx={{
                 backgroundColor:

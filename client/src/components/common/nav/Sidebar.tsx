@@ -8,8 +8,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { toggleSidebar } from "../../../store/globalSlice";
 import { IUser, TTheme } from "../../../types";
 import NavBox from "./NavBox";
@@ -18,7 +17,7 @@ import NavList from "./NavList";
 
 function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
   const theme: TTheme = useTheme();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
   const isSidebarOpened = useAppSelector(
     (state) => state.global.isSidebarOpened,
@@ -61,7 +60,7 @@ function Sidebar({ width, user }: { width: string; user: IUser | undefined }) {
                 </IconButton>
               </NavBox>
             </Box>
-            <NavList navItems={navItems} />
+            <NavList navItems={navItems} onClose={toggleSidebar} />
           </Box>
           <Box>
             <Divider />

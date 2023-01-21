@@ -1,2 +1,2 @@
 export { getUser } from "./auth-controllers";
-export { getProducts } from "./store-controllers";
+export { getCustomers, getProducts } from "./store-controllers";

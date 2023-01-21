@@ -1,5 +1,5 @@
 import { connection } from "mongoose";
-import {  dataProduct, dataProductStat, dataUser } from "../data";
+import { dataProduct, dataProductStat, dataUser } from "../data";
 import { Product, ProductStats, User } from "../models";
 
 async function seedDB() {

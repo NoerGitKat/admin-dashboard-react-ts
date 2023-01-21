@@ -18,7 +18,7 @@ export interface IUser extends DocumentResult<IUser> {
   state: string;
   country: string;
   occupation: string;
-  phone: string;
+  phoneNumber: string;
   transactions: string[];
   role: ERole;
 }

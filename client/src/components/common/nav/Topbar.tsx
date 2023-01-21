@@ -18,8 +18,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { GridMenuIcon } from "@mui/x-data-grid";
-import { useDispatch } from "react-redux";
-import { useMenu } from "../../../hooks";
+import { useAppDispatch, useMenu } from "../../../hooks";
 import { setTheme, toggleSidebar } from "../../../store/globalSlice";
 import { IUser, TTheme } from "../../../types";
 import { ETheme } from "../../../types/enums";
@@ -36,7 +35,7 @@ const toolbarStyles = {
 };
 
 function Topbar({ user }: { user: IUser | undefined }) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const theme = useTheme<TTheme>();
   const { anchorEl, isOpen, openMenu, closeMenu } = useMenu();
 

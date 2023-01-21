@@ -32,7 +32,7 @@ const userSchema: Schema = new Schema(
     occupation: {
       type: String,
     },
-    phone: {
+    phoneNumber: {
       type: String,
     },
     transactions: {

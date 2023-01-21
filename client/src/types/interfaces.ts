@@ -94,7 +94,11 @@ export type TNavItem = {
   icon: ReactNode | undefined;
 };
 
-export interface IUser extends Document {
+interface DocumentResult<T> {
+  _doc: T;
+}
+
+export interface IUser extends DocumentResult<IUser> {
   name: string;
   email: string;
   password: string;
@@ -105,4 +109,30 @@ export interface IUser extends Document {
   phone: string;
   transactions: string[];
   role: ERole;
+}
+
+export interface IProduct extends DocumentResult<IProduct> {
+  name: string;
+  price: number;
+  description: string;
+  rating: number;
+  supply: number;
+  stats: {
+    productId: string;
+    yearlySalesTotal: number;
+    yearlyTotalSoldUnits: number;
+    year: number;
+    monthlyData: [
+      {
+        month: string;
+        totalSales: number;
+        totalUnits: number;
+      },
+    ];
+    dailyData: {
+      date: string;
+      totalSales: number;
+      totalUnits: number;
+    };
+  };
 }

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUser } from "../../types";
 
-export const authApi = createApi({
+const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_ENDPOINT }),
   tagTypes: ["User"],
@@ -14,3 +14,5 @@ export const authApi = createApi({
 });
 
 export const { useGetUserQuery } = authApi;
+
+export default authApi;

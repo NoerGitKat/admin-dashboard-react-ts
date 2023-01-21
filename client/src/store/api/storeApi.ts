@@ -6,7 +6,7 @@ const storeApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_ENDPOINT }),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
-    getProducts: builder.query<IProduct, null>({
+    getProducts: builder.query<IProduct[], null>({
       query: () => `store/products`,
       providesTags: (result) => (result ? ["Product"] : []),
     }),

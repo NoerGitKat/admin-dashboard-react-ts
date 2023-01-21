@@ -112,6 +112,7 @@ export interface IUser extends DocumentResult<IUser> {
 }
 
 export interface IProduct extends DocumentResult<IProduct> {
+  _id: string;
   name: string;
   price: number;
   description: string;
